@@ -25,7 +25,7 @@ class Game
   end
 
   def draw?
-    ( @board.full? && !won? ) ? true : false
+    @board.full? && !won?
   end
 
   def over?
@@ -33,21 +33,21 @@ class Game
   end
 
   def won?
-    WIN_COMBINATIONS.any? do |combination|
-      return combination if winner_x(combination) || winner_y(combination)
+    WIN_COMBINATIONS.detect do |combination|
+      winner_x(combination) || winner_o(combination)
     end
   end
 
   def winner
     sequence = won?
-    sequence.is_a?(Array) ? @board.cells[sequence[0]] : nil
+    @board.cells[sequence[0]] if sequence.is_a?(Array)
   end
 
   def winner_x(combination)
     combination.all? { |x| @board.cells[x] == "X" }
   end
 
-  def winner_y(combination)
+  def winner_o(combination)
     combination.all? { |o| @board.cells[o] == "O" }
   end
 

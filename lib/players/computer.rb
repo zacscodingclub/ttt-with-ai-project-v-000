@@ -6,11 +6,7 @@ class Computer < Player
   def opening_move
     "5"
   end
-
-  def random_move(board)
-    (1..9).to_a.sample
-  end
-
+  
   def opponent
     self.token == "X" ? "O" : "X"
   end
@@ -32,7 +28,7 @@ class Computer < Player
   end
 
   def winning_move(board)
-    block_move(board) || win(board) || best_move(board)
+    win(board) || block_move(board) ||  best_move(board)
   end
 
   def never_win(board, token)

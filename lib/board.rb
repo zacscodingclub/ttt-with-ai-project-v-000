@@ -2,14 +2,10 @@ class Board
   attr_accessor :cells
 
   def initialize
-    cell_start
+    reset!
   end
 
   def reset!
-    cell_start
-  end
-
-  def cell_start
     @cells = Array.new(9, " ")
   end
 
@@ -30,7 +26,7 @@ class Board
   end
 
   def full?
-    @cells.any? { |cell| cell == " "} ? false : true
+    @cells.all? { |cell| cell != " "}
   end
 
   def taken?(index)
@@ -46,7 +42,7 @@ class Board
   end
 
   def turn_count
-    @cells.select { |cell| cell != " " }.length
+    @cells.count { |cell| cell != " " }
   end
 
   def update(index, player)

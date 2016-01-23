@@ -75,14 +75,3 @@ class TicTacToe
     end
   end
 end
-
-
-
-
-# Ask the user for who should go first and be "X".
-
-# Use the input to correctly initialize a Game with the appropriate player types and token values.
-
-# When the game is over, the CLI should prompt the user if they would like to play again and allow 
-# them to choose a new configuration for the game as described above. If the user doesn't want
-# to play again, exit the program.
